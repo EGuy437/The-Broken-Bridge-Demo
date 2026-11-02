@@ -17,4 +17,7 @@ Currently Planned Features:
 Submit a video file here to be evaluated. https://forms.gle/5TaGptCZbtWujgMt7
 
 Speedrun Leaderboard:
-Nothing has been submitted yet :(
+  All Collectables
+    None
+  Any%
+    1) EGuy437 - 1:59.7
