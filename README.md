@@ -18,6 +18,7 @@ Submit a video file here to be evaluated. https://forms.gle/5TaGptCZbtWujgMt7
 
 Speedrun Leaderboard:  
   - All Collectables  
-    None  
+    1. EGuy437 - 2:24.6
  -  Any%  
-    1. EGuy437 - 1:53.3  
+    1. Will - 1:37.0
+    2. EGuy437 - 1:53.3  
