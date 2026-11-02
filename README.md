@@ -13,3 +13,7 @@ Currently Planned Features:
 - Art revisions for some lacking assets
 - Optimizations in code
 - And more!
+
+Submit a video file here to be evaluated. https://forms.gle/5TaGptCZbtWujgMt7
+Speedrun Leaderboard:
+Nothing has been submitted yet :(
