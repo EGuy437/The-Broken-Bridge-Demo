@@ -4,6 +4,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite,
 		C3.Behaviors.scrollto,
 		C3.Behaviors.Platform,
+		C3.Behaviors.Timer,
 		C3.Plugins.TiledBg,
 		C3.Behaviors.solid,
 		C3.Behaviors.Bullet,
@@ -13,7 +14,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Audio,
 		C3.Behaviors.Sin,
 		C3.Behaviors.Fade,
-		C3.Behaviors.Timer,
 		C3.Behaviors.Tween,
 		C3.Behaviors.jumpthru,
 		C3.Plugins.Mouse.Cnds.OnClick,
@@ -64,7 +64,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.CompareY,
 		C3.Plugins.Sprite.Exps.Height,
 		C3.Plugins.Text.Acts.SetVisible,
-		C3.Behaviors.Tween.Acts.TweenTwoProperties
+		C3.Behaviors.Tween.Acts.TweenTwoProperties,
+		C3.Behaviors.Timer.Cnds.IsTimerRunning,
+		C3.Behaviors.Timer.Acts.StopTimer,
+		C3.Plugins.System.Cnds.Else
 	];
 };
 self.C3_JsPropNameTable = [
@@ -72,6 +75,7 @@ self.C3_JsPropNameTable = [
 	{LastXVector: 0},
 	{ScrollTo: 0},
 	{Platform: 0},
+	{Timer: 0},
 	{Player: 0},
 	{Solid: 0},
 	{Ground: 0},
@@ -109,7 +113,6 @@ self.C3_JsPropNameTable = [
 	{TheBrokenBridge: 0},
 	{State: 0},
 	{StartY: 0},
-	{Timer: 0},
 	{ThwompSpike: 0},
 	{Fan: 0},
 	{NegitiveFan: 0},

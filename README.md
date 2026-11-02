@@ -3,7 +3,6 @@ This is a game I'm making for my school's sophomore project. The game is made wi
 Play the game at https://eguy437.github.io/tempName/ and please leave feedback at https://forms.gle/pi3ZWp8aL4WDNS6T8
 
 BUGS:
-- Checkpoints move horizontally instead of vertically (This is fixed in test build)
 - Level 5 sometimes spawns the player in the roof, softlocking the level.
 
 Currently Planned Features:
