@@ -20,4 +20,4 @@ Speedrun Leaderboard:
   - All Collectables  
     None  
  -  Any%  
-    1. EGuy437 - 1:59.7  
+    1. EGuy437 - 1:53.3  
