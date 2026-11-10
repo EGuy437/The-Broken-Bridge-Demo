@@ -1256,6 +1256,21 @@ const C3=self.C3;C3.JobSchedulerRuntime=class extends C3.DefendedBase{constructo
 // scripts/shaders.js
 {
 self["C3_Shaders"] = {};
+self["C3_Shaders"]["warpripple"] = {
+	glsl: "#ifdef GL_FRAGMENT_PRECISION_HIGH\n#define highmedp highp\n#else\n#define highmedp mediump\n#endif\nvarying mediump vec2 vTex;\nuniform lowp sampler2D samplerFront;\nuniform mediump vec2 srcStart;\nuniform mediump vec2 srcEnd;\nuniform mediump vec2 srcOriginStart;\nuniform mediump vec2 srcOriginEnd;\nuniform highmedp float seconds;\nuniform mediump vec2 pixelSize;\nuniform mediump float freq;\nuniform mediump float amp;\nuniform mediump float speed;\nconst mediump float PI = 3.1415926;\nvoid main(void)\n{\nmediump vec2 srcOriginSize = srcOriginEnd - srcOriginStart;\nmediump vec2 tex = (vTex - srcOriginStart) / srcOriginSize;\ntex = tex * 2.0 - 1.0;\nmediump float d = length(tex);\nmediump float a = atan(tex.y, tex.x);\nd += sin((d * 2.0 * PI) * freq / (pixelSize.x * 750.0) + (seconds * speed)) * amp * (pixelSize.x * 750.0);\ntex.x = cos(a) * d;\ntex.y = sin(a) * d;\ntex = (tex + 1.0) / 2.0;\ntex = tex * srcOriginSize + srcOriginStart;\ntex = clamp(tex, min(srcStart, srcEnd), max(srcStart, srcEnd));\ngl_FragColor = texture2D(samplerFront, tex);\n}",
+	glslWebGL2: "",
+	wgsl: "%%SAMPLERFRONT_BINDING%% var samplerFront : sampler;\n%%TEXTUREFRONT_BINDING%% var textureFront : texture_2d<f32>;\nstruct ShaderParams {\nfreq : f32,\namp : f32,\nspeed : f32\n};\n%%SHADERPARAMS_BINDING%% var<uniform> shaderParams : ShaderParams;\n%%C3PARAMS_STRUCT%%\n%%C3_UTILITY_FUNCTIONS%%\n%%FRAGMENTINPUT_STRUCT%%\n%%FRAGMENTOUTPUT_STRUCT%%\nconst pi : f32 = 3.1415926;\n@fragment\nfn main(input : FragmentInput) -> FragmentOutput\n{\nvar pixelSize : vec2<f32> = c3_getPixelSize(textureFront);\nvar tex = c3_srcOriginToNorm(input.fragUV);\ntex = tex * 2.0 - 1.0;\nvar d : f32 = length(tex);\nvar a = atan2(tex.y, tex.x);\nd = d + sin((d * 2.0 * pi) * shaderParams.freq / (pixelSize.x * 750.0) + (c3Params.seconds * shaderParams.speed)) * shaderParams.amp * (pixelSize.x * 750.0);\ntex.x = cos(a) * d;\ntex.y = sin(a) * d;\ntex = (tex + 1.0) / 2.0;\ntex = c3_normToSrcOrigin(tex);\ntex = c3_clampToSrc(tex);\nvar output : FragmentOutput;\noutput.color = textureSample(textureFront, samplerFront, tex);\nreturn output;\n}",
+	blendsBackground: false,
+	usesDepth: false,
+	extendBoxHorizontal: 50,
+	extendBoxVertical: 50,
+	crossSampling: false,
+	mustPreDraw: false,
+	preservesOpaqueness: false,
+	supports3dDirectRendering: false,
+	animated: true,
+	parameters: [["freq",0,"float"],["amp",0,"percent"],["speed",0,"float"]]
+};
 
 }
 
@@ -1535,7 +1550,7 @@ self.C3_ExpressionFuncs = [
 			const n1 = p._GetNode(1);
 			return () => Math.abs((n0.ExpObject() - n1.ExpObject()));
 		},
-		() => 64,
+		() => 150,
 		() => "readyPostion",
 		() => "charged",
 		() => "drop",
@@ -1543,7 +1558,7 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			const f1 = p._GetNode(1).GetBoundMethod();
-			return () => (n0.ExpObject() + (600 * f1()));
+			return () => (n0.ExpObject() + (1500 * f1()));
 		},
 		() => "waiting",
 		() => 3,
@@ -1563,7 +1578,11 @@ self.C3_ExpressionFuncs = [
 		() => 1000,
 		() => "shrink",
 		() => 0.5,
-		() => "reset"
+		() => "reset",
+		() => "press",
+		() => "opening",
+		() => 1.3,
+		() => "breaking"
 ];
 
 
