@@ -1541,6 +1541,7 @@ self.C3_ExpressionFuncs = [
 		() => "walking",
 		() => 10,
 		() => "idle",
+		() => "bgm",
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpInstVar();

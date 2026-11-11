@@ -59,6 +59,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Behaviors.Fade.Acts.StartFade,
 		C3.Plugins.System.Acts.SetBoolVar,
+		C3.Plugins.System.Cnds.CompareBoolVar,
+		C3.Plugins.System.Acts.ToggleBoolVar,
 		C3.Behaviors.Fade.Acts.RestartFade,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
 		C3.Behaviors.Timer.Acts.StartTimer,
@@ -75,7 +77,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.OnAnimFinished,
 		C3.Plugins.Sprite.Cnds.IsOverlapping,
 		C3.Plugins.TiledBg.Cnds.IsBoolInstanceVarSet,
-		C3.Behaviors.Sin.Acts.SetEnabled
+		C3.Behaviors.Sin.Acts.SetEnabled,
+		C3.Plugins.Audio.Cnds.OnEnded
 	];
 };
 self.C3_JsPropNameTable = [
@@ -157,7 +160,8 @@ self.C3_JsPropNameTable = [
 	{bombTime: 0},
 	{CurrentLevel: 0},
 	{isGameStarted: 0},
-	{collectablesObtained: 0}
+	{collectablesObtained: 0},
+	{isMusicPlaying: 0}
 ];
 
 self.InstanceType = {
